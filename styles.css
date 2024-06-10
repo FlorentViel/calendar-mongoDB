@@ -1,0 +1,263 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+:root {
+    --StartLightGradient: rgb(116, 108, 247);
+    --EndLightGradient: rgb(74,204,234);
+
+    --bg-light-1: #E7F9FF;
+    --bg-light-2: #FAFAFF;
+    
+    --color-text : #121212;
+
+}
+
+body {
+    background-color: #E7F9FF;
+    min-height: 100vh;
+    color: var(--color-text);
+}
+
+/* Text */
+
+:is(h1, h2) {
+    color: var(--StartLightGradient);
+    font-weight: 700;
+}
+
+
+
+/* Calendar */
+
+.calendar {
+    width: 100%;
+    height: 100%;
+    padding: 30px 60px;
+  }
+
+.calendar .header {
+    width: 100%;
+    background-color: var(--bg-light-2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    border: 1px solid var(--EndLightGradient);
+    padding: 10px 20px;
+}
+
+
+.calendar .header .btn {
+    width: 40px;
+    height: 40px;
+    background: var(--StartLightGradient);
+    border: 1px solid var(--EndLightGradient);
+    border-radius: 50%;
+    font-size: 25px;
+    color: #fff;
+    line-height: 40px;
+    text-align: center;
+    margin: 0 10px;
+    cursor: pointer;
+    }
+
+    .calendar .header .btn:hover {
+        background: linear-gradient(90deg, var(--StartLightGradient), var(--EndLightGradient));
+        color: #fff;
+    }
+
+/* wrappers */
+
+.wrappers {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+/* Wrapper submite */
+
+#calendar-form {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: center;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+}
+
+.input-wrapper {
+    position: relative;
+
+}
+
+#error-message {
+    position: absolute;    
+    top: 25px;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 0, 0, 0.5);
+    color: #000000;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    z-index: 100; 
+}
+
+#calendar-form #date {
+    width: 170px;
+    height: 25px;
+    background: var(--bg-light-2);
+    border: 1px solid var(--EndLightGradient);
+    border-radius: 5px;
+    font-size: 15px;
+    color: #121212;
+    padding: 0 10px;
+    cursor: default;
+    text-align: center;
+}
+
+#calendar-form #date:focus {
+    outline: none;
+}
+
+#calendar-form .btn {
+    width: 100px;
+    height: 25px;
+    background: var(--StartLightGradient);
+    border: 1px solid var(--EndLightGradient);
+    border-radius: 5px;
+    font-size: 15px;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#calendar-form .btn:hover {
+    background: linear-gradient(90deg, var(--StartLightGradient), var(--EndLightGradient));
+    color: #fff;
+}
+
+
+
+/* Wrapper calendar */
+
+.calendar .months-wrappers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    padding-bottom: 30px;
+}
+
+.calendar .month-wrapper{
+    width: 290px;
+    height: 269px;
+    background: var(--bg-light-2);
+    border: 4px solid var(--EndLightGradient);
+    padding: 12px;
+    border-radius: 5px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  .month-header .month {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--StartLightGradient);
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--EndLightGradient);
+  }
+
+  .month-wrapper ul {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    text-align: center;
+  }
+  
+  .month-wrapper ul li, .month-wrapper ul input[type="button"] {
+    width: calc(100% / 7);
+    font-size: 13px;
+    color: #121212;
+    margin-top: 10px;
+  }
+
+  .day {
+    display: block;
+    all: unset;
+    width: calc(100% / 7)!important;
+    text-align: center;
+    color: #121212;
+  }
+
+  
+  .days li input[type="button"] {
+  all: unset;
+  width: 100%!important;
+  height: 20px;
+  color: #121212;
+  cursor: pointer;
+}
+
+
+  .month-wrapper ul input[type="button"]:hover {
+    background: var(--EndLightGradient);
+    color: #fff;
+    border-radius: 100%;
+  }
+
+  .month-wrapper ul input[type="button"].active {
+    background: var(--StartLightGradient);
+    color: #fff;
+    border-radius: 100%;
+  }
+
+  .highlighted {
+    background-color: yellow!important;
+    border-radius: 100%!important;
+    color: #121212!important;
+    pointer-events: none!important;
+
+  }
+
+
+  .database-date {
+    color: #121212;
+    background-color: aqua;
+  }
+  
+  .month-wrapper ul.weeks li {
+    font-weight: 500;
+  }
+  
+  .month-wrapper ul.days li {
+    color: #333;
+  }
+
+  
+  /* Calendar */
+
+  

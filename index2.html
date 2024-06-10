@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!--Created by Tivotal-->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Full Year Calendar - JavaScript</title>
+
+    <!--font awesome(for icons)-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!--css file-->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="calendar">
+      <div class="header">
+        <a href="#" class="btn prev-btn">
+          <i class="fas fa-chevron-left"></i>
+        </a>
+
+        <h2 class="current-year"></h2>
+
+        <a href="#" class="btn next-btn">
+          <i class="fas fa-chevron-right"></i>
+        </a>
+      </div>
+
+      <div class="months-wrapper">
+          <div class="month-wrapper">
+          <div class="month-header">
+            <h3 class="month">January</h3>
+          </div>
+          <ul class="weeks">
+            <li>Lun.</li>
+            <li>Mar.</li>
+            <li>Mer.</li>
+            <li>Jeu.</li>
+            <li>Ven.</li>
+            <li>Sam.</li>
+            <li>Dim.</li>
+          </ul>
+          <ul class="days">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
