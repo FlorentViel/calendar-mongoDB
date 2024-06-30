@@ -55,11 +55,16 @@ app.post('/save-date', async (req, res) => {
       throw new Error('Invalid date format');
     }
 
+    // Check if the date already exists in the database
+    const existingDate = await db.collection('dates').findOne({ date: parsedDate });
+    if (existingDate) {
+      console.error('Date already exists:', date);
+      return res.status(400).send('La date est déjà prise. Veillez prendre une autre date.');
+    }
+
     const result = await db.collection('dates').insertOne({ date: parsedDate });
-    console.log('Date saved successfully:', result);
     res.send('Date saved successfully!');
   } catch (err) {
-    console.error('Failed to save date:', err);
     res.status(500).send('Failed to save date: ' + err.message);
   }
 });
@@ -79,17 +84,14 @@ app.get('/get-dates', async (req, res) => {
         }
         const parsedDate = new Date(year, monthIndex, day);
         if (isNaN(parsedDate)) {
-          console.error(`Invalid date format: ${doc.date}`);
           return null;
         }
         return parsedDate.toISOString();
       } else {
-        console.error(`Expected a Date or string, but got ${typeof doc.date}: ${doc.date}`);
         return null;
       }
     }));
   } catch (err) {
-    console.error('Failed to fetch dates:', err);
     res.status(500).send('Failed to fetch dates: ' + err.message);
   }
 });

@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Calandrier</title>
+        <title>Calendrier 📆</title>
     
         <!--icon fontawsome -->
         <link
@@ -21,12 +21,12 @@
 
     <div class="calendar">
         <header class="header">
-            <a href="#" class="prev btn">
+            <a href="#" class="prev btn" title="Mois précédent">
                 <i class="fas fa-angle-left"></i>
             </a>
             <h2 class="current-year"></h2>
             
-            <a href="#" class="next btn ">
+            <a href="#" class="next btn" title="Mois suivant">
                 <i class="fas fa-angle-right"></i>
             </a>
 
@@ -36,7 +36,7 @@
 
             <form id="calendar-form">
                 <div class="input-wrapper">
-                    <input type="text" id="date" readonly>
+                    <input type="text" id="date" readonly title="Date sélectionnée" placeholder="Sélectionnez une date">
                     <input type="submit" class="btn" id="validate" value="Validez">
                     <p id="error-message"></p>            
 
@@ -50,7 +50,7 @@
             </section>
 
 
-            <section class>
+            <section class="saved-dates">
                 <ul class="saved-dates-list"></ul>
             </section>
         </main>

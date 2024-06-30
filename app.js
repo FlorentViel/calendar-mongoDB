@@ -120,27 +120,41 @@ document.getElementById('calendar-form').addEventListener('submit', function(eve
     return;
   }
 
-  fetch('http://localhost:3000/save-date', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ date: date }),
-  })
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return response.text();
-  })
-  .then(data => {
-    alert(data);
-    location.reload();
-  })
-  .catch((error) => {
-    console.error('Error:', error);
-    document.getElementById('error-message').textContent = 'Une erreur est survenue lors de l\'envoi de la date. Veuillez réessayer.';
-  });
+  // Check if the date is valid
+  if (isValidDate(date)) {
+    fetch('http://localhost:3000/save-date', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ date: date }),
+    })
+    .then(response => {
+      if (!response.ok) {
+        // If the server responded with a status code other than 200, get the error message from the response
+        return response.text().then(errorMessage => {
+          throw new Error(errorMessage);
+        });
+      }
+      return response.text();
+    })
+    .then(data => {
+      alert(data);
+      location.reload();
+    })
+    .catch((error) => {
+      // Display the error message from the server as an alert
+      alert(error.message);
+    });
+  } else {
+    // If the date is not valid, display an error message
+    alert('La date est déjà prise. Veillez prendre une autre date.');
+  }
+
+  // Function to check if a date is valid
+  function isValidDate(date) {
+    return !isNaN(Date.parse(date));
+  }
 });
 
 
